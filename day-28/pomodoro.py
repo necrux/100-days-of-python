@@ -18,6 +18,7 @@ timer = None
 
 
 def reset_timer():
+    """Reset all timer functionality."""
     global reps
     reps = 0
     window.after_cancel(timer)
@@ -30,6 +31,7 @@ def reset_timer():
 
 
 def start_timer():
+    """Start the timer."""
     global reps
     reps += 1
     work_sec = WORK_MIN * 60
@@ -40,7 +42,7 @@ def start_timer():
         count_down(work_sec)
         timer_label.config(text="Work", fg=GREEN, bg=YELLOW)
     elif reps % 8 == 0:
-        count_down(LONG_BREAK_MIN)
+        count_down(long_break_sec)
         timer_label.config(text="Break", fg=RED, bg=YELLOW)
     else:
         count_down(short_break_sec)
@@ -51,6 +53,7 @@ def start_timer():
 
 
 def count_down(count):
+    """Counts down the time; continuelly starts the next sessions of start_timer."""
     count_min = math.floor(count / 60)
     count_sec = count % 60
     if count_sec < 10:
