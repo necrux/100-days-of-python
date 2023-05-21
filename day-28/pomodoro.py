@@ -65,6 +65,8 @@ def count_down(count):
         timer = window.after(1000, count_down, count - 1)
     else:
         start_timer()
+        window.bell()
+        window.attributes('-topmost', 1)
         marks = ""
         work_sessions = math.floor(reps / 2)
         for _ in range(work_sessions):
